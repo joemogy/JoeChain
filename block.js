@@ -2,29 +2,28 @@ const { GENESIS_DATA } = require('./config');
 const cryptoHash = require('./crypto-hash');
 
 class Block {
-    constructor({index, timestamp, previousHash, hash, data}) {
-        this.index = index;
-        this.timestamp = timestamp;
-        this.previousHash = previousHash;
-        this.hash = hash;
-        this.data = data;
-    }
-    static genesis() {
-        return new this(GENESIS_DATA);
-    }
+  constructor({ timestamp, lastHash, hash, data }) {
+    this.timestamp = timestamp;
+    this.lastHash = lastHash;
+    this.hash = hash;
+    this.data = data;
+  }
 
-    static mineBlock({ previousBlock, data }) {
-        const index = previousBlock.index + 1;
-        const timestamp = Date.now();
-        const previousHash = previousBlock.hash;
+  static genesis() {
+    return new this(GENESIS_DATA);
+  }
 
+  static mineBlock({ lastBlock, data }) {
+    const timestamp = Date.now();
+    const lastHash = lastBlock.hash;
 
-        return new this({ 
-            index, 
-            timestamp, 
-            previousHash, 
-            hash: cryptoHash(index, timestamp, previousHash, data), data });
-    }
+    return new this({
+      timestamp: Date.now(),
+      lastHash: lastBlock.hash,
+      data,
+      hash: cryptoHash(timestamp, lastHash, data)
+    });
+  }
 }
 
 module.exports = Block;
