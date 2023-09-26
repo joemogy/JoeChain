@@ -1,3 +1,5 @@
+const { GENESIS_DATA } = require('./config');
+
 class Block {
     constructor({index, timestamp, previousHash, hash, data}) {
         this.index = index;
@@ -6,6 +8,10 @@ class Block {
         this.hash = hash;
         this.data = data;
     }
+    static genesis() {
+        return new Block(GENESIS_DATA);
+    }
+
 }
 
 module.exports = Block;
