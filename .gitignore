@@ -1,0 +1,29 @@
+node_modules
+node_modules
+
+# .env file
+.env
+
+# Logs
+logs
+
+# Build results
+dist
+build
+
+# Dependencies
+node_modules
+package-lock.json
+yarn.lock
+```
+
+## License
+
+MIT
+
+## Author
+
+[Joseph Mogavero](
+https://www.linkedin.com/in/joseph-mogavero-/)
+
+## Acknowledgments
