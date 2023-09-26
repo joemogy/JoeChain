@@ -37,9 +37,9 @@ describe('Blockchain', () => {
 
     describe('when the chain starts with the genesis block and has multiple blocks', () => {
       beforeEach(() => {
-        blockchain.addBlock({ data: 'Bears' });
-        blockchain.addBlock({ data: 'Beets' });
-        blockchain.addBlock({ data: 'Battlestar Galactica' });
+        blockchain.addBlock({ data: 'Bits' });
+        blockchain.addBlock({ data: 'Blocks' });
+        blockchain.addBlock({ data: 'Bitcoin Blockchain' });
       });
 
       describe('and a lastHash reference has changed', () => {
@@ -95,9 +95,9 @@ describe('Blockchain', () => {
 
     describe('when the new chain is longer', () => {
       beforeEach(() => {
-        newChain.addBlock({ data: 'Bears' });
-        newChain.addBlock({ data: 'Beets' });
-        newChain.addBlock({ data: 'Battlestar Galactica' });
+        newChain.addBlock({ data: 'Bits' });
+        newChain.addBlock({ data: 'Blocks' });
+        newChain.addBlock({ data: 'Bitcoin Blockchain' });
       });
 
       describe('and the chain is invalid', () => {
