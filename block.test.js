@@ -1,4 +1,5 @@
 const Block = require('./block');
+const cryptoHash = require('./crypto-hash');
 const { GENESIS_DATA } = require('./config');
 
 describe('Block', () => {
@@ -38,6 +39,10 @@ describe('Block', () => {
             expect(minedBlock instanceof Block).toBe(true);
         });
 
+        it('sets the `index` property properly', () => {
+            expect(minedBlock.index).toEqual(previousBlock.index + 1);
+        });
+
         it('sets the `previousHash` to be the `hash` of the previousBlock', () => {
             expect(minedBlock.previousHash).toEqual(previousBlock.hash);
         });
@@ -48,6 +53,16 @@ describe('Block', () => {
 
         it('sets a `timestamp`', () => {
             expect(minedBlock.timestamp).not.toEqual(undefined);
+        });
+
+        it('creates a SHA-256 `hash` based on the proper inputs', () => {
+            expect(minedBlock.hash)
+            .toEqual(cryptoHash(
+                minedBlock.index, 
+                minedBlock.timestamp, 
+                minedBlock.previousHash, 
+                minedBlock.data
+            ));
         });
     });
 });
