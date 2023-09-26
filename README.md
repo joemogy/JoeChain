@@ -3,6 +3,8 @@
 ## DEPENDENCIES
 node
 npm
+express
+nodemon
 jest
 hex-to-binary
 
@@ -13,3 +15,8 @@ npm run test
 
 CHECK AVERAGE MINING
 node average-work.js
+  
+"scripts": 
+    "test": "jest --watchAll",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
